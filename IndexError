@@ -1,0 +1,47 @@
+Terminal Error Output: 
+
+"robertcontofalsky@Roberts-MacBook-Air ~ % python3 Desktop/Cocde_test.py
+Traceback (most recent call last):
+  File "/Users/robertcontofalsky/Desktop/Cocde_test.py", line 68, in <module>
+    print(evaluate_statement(expression, assignment))
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/robertcontofalsky/Desktop/Cocde_test.py", line 44, in evaluate_statement
+    operators.pop()  # pop the '('
+    ^^^^^^^^^^^^^^^
+IndexError: pop from empty list'
+
+Code Snippet cuasing the issue: 
+
+    for token in tokens:
+        if token in propositional_variables or token in ['true', 'false']:
+            postfix.append(token)
+        elif token == '(':
+            operators.append(token)
+        elif token == ')':
+            while operators and operators[-1] != '(':
+                postfix.append(operators.pop())
+        operators.pop()  # pop the '('
+    else:  # Operator 
+        while (operators and 
+               operators[-1] != '(' and
+               precedence[operators[-1]] >= precedence[token]):
+            postfix.append(operators.pop())
+        operators.append(token)
+
+Solution: 
+
+    for token in tokens:
+        if token in propositional_variables or token in ['true', 'false']:
+            postfix.append(token)
+        elif token == '(':
+            operators.append(token)
+        elif token == ')':
+            while operators and operators[-1] != '(':
+                postfix.append(operators.pop())
+        operators.pop()  # pop the '('
+    else:  # Operator 
+        while (operators and 
+               operators[-1] != '(' and
+               precedence[operators[-1]] >= precedence[token]):
+            postfix.append(operators.pop())
+        operators.append(token)
