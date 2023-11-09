@@ -1,2 +1,2 @@
 # CodingErrors-Solutions
-The coding errors I ran into and what their solutiosn were
+A public repository of coding errors I ran into Since November 9th, 2023, and what their solutions were.
